@@ -81,7 +81,7 @@ numpy
 
 joblib
 
-bhinav Jangid
+Abhinav Jangid
 🎓 B.Tech CSE (AI/ML)
 🔗 LinkedIn Profile: https://www.linkedin.com/in/abhinav-jangid22/
 
