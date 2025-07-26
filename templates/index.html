@@ -1,0 +1,145 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Performance Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1f4037);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px 40px;
+      width: 90%;
+      max-width: 550px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: #00ffe7;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label { font-weight: 600; }
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #1e1e1e;
+      color: #fff;
+      font-size: 1rem;
+    }
+    button {
+      padding: 12px;
+      border-radius: 10px;
+      background-color: #00ffe7;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #00bfa5;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.3rem;
+      animation: fadeIn 1s ease-in-out;
+      color: #00ffc3;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 Student Performance Predictor</h1>
+    <form method="POST" action="/predict">
+
+      <label for="gender">Gender</label>
+      <select name="gender" id="gender" required>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+
+      <label for="race_ethnicity">Race/Ethnicity</label>
+      <select name="race_ethnicity" id="race_ethnicity" required>
+        <option value="group A">Group A</option>
+        <option value="group B">Group B</option>
+        <option value="group C">Group C</option>
+        <option value="group D">Group D</option>
+        <option value="group E">Group E</option>
+      </select>
+
+      <label for="parental_education">Parental Education</label>
+      <select name="parental_education" id="parental_education" required>
+        <option value="some high school">Some High School</option>
+        <option value="high school">High School</option>
+        <option value="some college">Some College</option>
+        <option value="associate's degree">Associate's Degree</option>
+        <option value="bachelor's degree">Bachelor's Degree</option>
+        <option value="master's degree">Master's Degree</option>
+      </select>
+
+      <label for="lunch">Lunch Type</label>
+      <select name="lunch" id="lunch" required>
+        <option value="standard">Standard</option>
+        <option value="free/reduced">Free/Reduced</option>
+      </select>
+
+      <label for="test_preparation">Test Preparation</label>
+      <select name="test_preparation" id="test_preparation" required>
+        <option value="none">None</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <label for="math_score">Math Score</label>
+      <input type="number" name="math_score" id="math_score" required min="0" max="100">
+
+      <label for="reading_score">Reading Score</label>
+      <input type="number" name="reading_score" id="reading_score" required min="0" max="100">
+
+      <label for="writing_score">Writing Score</label>
+      <input type="number" name="writing_score" id="writing_score" required min="0" max="100">
+
+      <button type="submit">🔮 Predict Score</button>
+    </form>
+
+    {% if prediction is not none %}
+      <div class="result">
+        🎯 <strong>Predicted Average Score:</strong> {{ prediction }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
