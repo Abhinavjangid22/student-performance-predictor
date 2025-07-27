@@ -85,5 +85,5 @@ Abhinav Jangid
 🎓 B.Tech CSE (AI/ML)
 🔗 LinkedIn Profile: https://www.linkedin.com/in/abhinav-jangid22/
 
-🌟 Show Some Love!
-If you found this project helpful, please consider starring ⭐ the repository!
+🌟 Show Some Love
+If you found this project helpful, please consider starring ⭐ the repository
